@@ -15,4 +15,17 @@ class DbHelper {
   String fqHalfYear = "fqHalfYear";
   String fqQuarter = "fqQuarter";
   String fqMonth = "fqMonth";
+
+  // Singleton
+  static final DbHelper _dbHelper = DbHelper._internal();
+
+  // Factory Constructor
+  DbHelper._internal();
+
+  factory DbHelper() {
+    return _dbHelper;
+  }
+
+  // Database entry point
+  static Database _db;
 }
