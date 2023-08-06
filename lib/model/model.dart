@@ -37,5 +37,10 @@ class Doc {
     this.id = o["id"];
     this.title = o["title"];
     this.expiration = DateUtils.TrimDate(o["expiration"]);
+
+    this.fqYear = o["fqYear"];
+    this.fqHalfYear = o["fqHalfYear"];
+    this.fqQuarter = o["fqQuarter"];
+    this.fqMonth = o["fqMonth"];
   }
 }
