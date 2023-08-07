@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this, unnecessary_null_comparison, prefer_collection_literals
+
 import 'package:doc_expiry_app/util/utils.dart';
 
 class Doc {

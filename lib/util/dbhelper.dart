@@ -1,4 +1,6 @@
 // import 'dart:async';
+// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, unnecessary_null_comparison, prefer_conditional_assignment
+
 import 'dart:io';
 
 import 'package:doc_expiry_app/model/model.dart';

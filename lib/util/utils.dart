@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison, non_constant_identifier_names, unnecessary_new, curly_braces_in_flow_control_structures, prefer_interpolation_to_compose_strings, unused_local_variable
+
 import 'package:intl/intl.dart';
 
 class Val {
