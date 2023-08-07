@@ -1,5 +1,5 @@
 // import 'dart:async';
-// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, unnecessary_null_comparison, prefer_conditional_assignment
+// ignore_for_file: prefer_interpolation_to_compose_strings, prefer_typing_uninitialized_variables, prefer_adjacent_string_concatenation, unnecessary_null_comparison, prefer_conditional_assignment, unnecessary_string_interpolations, unnecessary_brace_in_string_interps
 
 import 'dart:io';
 
@@ -76,5 +76,29 @@ class DbHelper {
     var r =
         await db.rawQuery("SELECT * FROM $tblDocs ORDER BY $docExpiration ASC");
     return r;
+  }
+
+  // Get a Doc based on the id
+  Future<List> getDoc(int id) async {
+    Database db = await this.db;
+    var r = await db
+        .rawQuery("SELECT * from $tblDocs WHERE" + "$docId" + "=" + "${id}");
+    return r;
+  }
+
+  // Get a Dc based on a String parload
+  Future<List?> getDocFromStr(String payload) async {
+    List<String> p = payload.split("|");
+    if (p.length == 2) {
+      Database db = await this.db;
+      var r = await db.rawQuery("SELECT * from $tblDocs WHERE $docId = " +
+          p[0] +
+          " AND $docExpiration='" +
+          p[1] +
+          "'");
+      return r;
+    } else {
+      return null;
+    }
   }
 }
