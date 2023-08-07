@@ -101,4 +101,20 @@ class DbHelper {
       return null;
     }
   }
+
+  // Get the number of Docs
+  Future<int?> getDocsCount() async {
+    Database db = await this.db;
+    var r = Sqflite.firstIntValue(
+        await db.rawQuery("SELECT COUNT (*) FROM $tblDocs"));
+    return r;
+  }
+
+  // Get the max document id available on the database
+  Future<int?> getMaxId() async {
+    Database db = await this.db;
+    var r = Sqflite.firstIntValue(
+        await db.rawQuery("SELECT MAX(id) FROM $tblDocs"));
+    return r;
+  }
 }
