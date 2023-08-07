@@ -69,4 +69,12 @@ class DbHelper {
     }
     return r;
   }
+
+  // Get the list of docs
+  Future<List> getDocs() async {
+    Database db = await this.db;
+    var r =
+        await db.rawQuery("SELECT * FROM $tblDocs ORDER BY $docExpiration ASC");
+    return r;
+  }
 }
