@@ -1,6 +1,7 @@
 // import 'dart:async';
 import 'dart:io';
 
+import 'package:doc_expiry_app/model/model.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
@@ -52,5 +53,18 @@ class DbHelper {
             "$docExpiration TEXT, " +
             "$fqYear INTEGER, $fqHalfYear INTEGER, $fqQuarter INTEGER, " +
             "$fqMonth INTEGER)");
+  }
+
+  // Insert a new document
+  Future<int> insertDoc(Doc doc) async {
+    var r;
+
+    Database db = await this.db;
+    try {
+      r = await db.insert(tblDocs, doc.toMap());
+    } catch (e) {
+      debugPrint("insertDoc: " + e.toString());
+    }
+    return r;
   }
 }
