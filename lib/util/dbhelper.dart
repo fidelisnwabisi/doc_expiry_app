@@ -117,4 +117,28 @@ class DbHelper {
         await db.rawQuery("SELECT MAX(id) FROM $tblDocs"));
     return r;
   }
+
+  // Update a doc
+  Future<int> updateDoc(Doc doc) async {
+    var db = await this.db;
+    var r = await db
+        .update(tblDocs, doc.toMap(), where: "$docId = ?", whereArgs: [doc.id]);
+    return r;
+  }
+
+  // Delete a doc
+  Future<int> deletDoc(int id) async {
+    var db = await this.db;
+    int r = await db.rawDelete(
+      "DELETE FROM $tblDocs WHERE $docId = $id",
+    );
+    return r;
+  }
+
+  // Delete all docs
+  Future<int> deleteRows(String tbl) async {
+    var db = await this.db;
+    int r = await db.rawDelete("DELETE FROM $tbl");
+    return r;
+  }
 }
