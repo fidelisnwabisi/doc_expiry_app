@@ -1,6 +1,7 @@
 import 'package:doc_expiry_app/model/model.dart';
 import 'package:doc_expiry_app/util/dbhelper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 const menuDelete = "Delete";
 final List<String> menuOptions = const <String>[menuDelete];
@@ -22,7 +23,7 @@ class DocDetailState extends State<DocDetail> {
 
   final TextEditingController titleCtrl = TextEditingController();
   final TextEditingController expirationCtrl =
-      MaskdTextController(mask: "2000-00-00");
+      MaskedTextController(mask: "2000-00-00");
 
   bool fqYearCtrl = true;
   bool fqHalfYearCtrl = true;
