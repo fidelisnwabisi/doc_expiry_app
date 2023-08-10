@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'ui/doclist.dart';
+
 void main() {
   runApp(const DocExpiryApp());
 }
@@ -16,7 +18,7 @@ class DocExpiryApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: DocList(),
+      home: const DocList(),
     );
   }
 }
