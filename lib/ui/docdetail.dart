@@ -37,11 +37,11 @@ class DocDetailState extends State<DocDetail> {
   bool fqMonthCrtl = true;
   bool fqLessMonthCtrl = true;
 
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
-  }
+  // @override
+  // Widget build(BuildContext context) {
+  //   // TODO: implement build
+  //   throw UnimplementedError();
+  // }
 
   // Initialization code
   void _initCtrls() {
@@ -138,5 +138,11 @@ class DocDetailState extends State<DocDetail> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(backgroundColor: color, content: Text(message)),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _initCtrls();
   }
 }
