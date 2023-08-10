@@ -126,7 +126,7 @@ class DbHelper {
   }
 
   // Delete a doc
-  Future<int> deletDoc(int id) async {
+  Future<int> deleteDoc(int id) async {
     var db = await this.db;
     int r = await db.rawDelete(
       "DELETE FROM $tblDocs WHERE $docId = $id",

@@ -77,4 +77,21 @@ class DocDetailState extends State<DocDetail> {
       });
     }, currentTime: initialDate);
   }
+
+  // Upper menu
+  Future<void> _selectMenu(String value) async {
+    switch (value) {
+      case menuDelete:
+        if (widget.doc.id == -1) {
+          return;
+        }
+        _deleteDoc(widget.doc.id);
+    }
+  }
+
+  // Delete Doc
+  void _deleteDoc(int id) async {
+    int r = await widget.dbh.deleteDoc(widget.doc.id);
+    Navigator.pop(context, true);
+  }
 }
