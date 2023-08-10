@@ -1,9 +1,11 @@
-import 'package:doc_expiry_app/util/utils.dart';
+import 'package:doc_expiry_app/util/utils.dart' as utils;
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 
 import '../model/model.dart';
 import '../util/dbhelper.dart';
+import '../util/utils.dart';
 
 const menuDelete = "Delete";
 final List<String> menuOptions = const <String>[menuDelete];
@@ -34,7 +36,7 @@ class DocDetailState extends State<DocDetail> {
   bool fqLessMonthCtrl = true;
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     // TODO: implement build
     throw UnimplementedError();
   }
@@ -55,5 +57,24 @@ class DocDetailState extends State<DocDetail> {
         : false;
     fqMonthCrtl =
         widget.doc.fqMonth != null ? Val.IntToBool(widget.doc.fqMonth) : false;
+  }
+
+  // Date Picker & Date Function
+  Future _chooseDate(BuildContext context, String initialDateString) async {
+    var now = DateTime.now();
+    var initialDate = utils.DateUtils.convertToDate(initialDateString) ?? now;
+
+    initialDate = (initialDate.year >= now.year && initialDate.isAfter(now)
+        ? initialDate
+        : now);
+
+    DatePicker.showDatePicker(context, showTitleActions: true,
+        onConfirm: (date) {
+      setState(() {
+        DateTime dt = date;
+        String r = utils.DateUtils.ftDateAsStr(dt);
+        expirationCtrl.text = r;
+      });
+    }, currentTime: initialDate);
   }
 }
