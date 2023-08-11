@@ -18,7 +18,7 @@ class DocExpiryApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
         useMaterial3: true,
       ),
-      home: const DocList(),
+      home: DocList(),
     );
   }
 }
